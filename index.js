@@ -9,26 +9,37 @@ class TextInput extends Component {
     this.id = props.id || uuidv4();
 
     this.state = {
-      value: '',
+      value: props.value || '',
       valid: ''
     };
+  }
 
-    this.handleChange = this.handleChange.bind(this);
+  componentDidMount() {
+    if (typeof this.props.validator === 'function') {
+      this.setState((prevState, props) => {
+        let valid = this.props.validator(this.state.value);
+
+        return { valid };
+      });
+    }
   }
 
   handleChange(e) {
+    // Pass the value from the event to avoid a stupid synthetic event
+    let value = e.target.value;
+
     this.setState((prevState, props) => {
       let valid = prevState.valid;
       
       // Check if input has any value
-      if (e.target.value.length > 0) {
+      if (value.length > 0) {
         // If the input has a value, check to see if it has
         // a validator function set
         if (typeof this.props.validator === 'function') {
           // If the input has a validator function set, we
           // run the function and assign it's returned value
           // to valid so we can update the state.
-          valid = this.props.validator(e.target.value);
+          valid = this.props.validator(value);
         }
       } else {
         // If the input has no value, set valid to an empty string
@@ -37,7 +48,7 @@ class TextInput extends Component {
       }
 
       return {
-        value: e.target.value,
+        value,
         valid
       };
     });
@@ -49,8 +60,20 @@ class TextInput extends Component {
         { typeof this.props.label !== 'undefined' ? <label htmlFor={this.id}>{this.props.label}</label> : '' }
         <input
           type={this.props.type || 'text'}
-          onChange={this.handleChange}
+          onChange={this.handleChange.bind(this)}
           value={this.state.value} />
+        {
+          this.state.valid !== '' ?
+            <div className="validation-message">
+              {
+                this.state.valid === true ?
+                  <div className="success">{this.props.success}</div>
+                  :
+                  <div className="error">{this.props.error}</div>
+              }
+            </div>
+            : ''
+        }
       </div>
     );
   }
