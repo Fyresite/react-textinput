@@ -51,6 +51,13 @@ class TextInput extends Component {
         value,
         valid
       };
+    }, () => {
+      // Check if the onChange property is defined as a function
+      if (typeof this.props.onChange === 'function') {
+        // If the onChange property is defined as a function, call it and send the
+        // synthetic event and the updated state of the component
+        this.props.onChange(e, Object.assign({}, this.state));
+      }
     });
   }
 

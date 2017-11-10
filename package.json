@@ -1,12 +1,12 @@
 {
   "name": "@fyresite/react-textinput",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Barebones React text input component",
   "main": "dist/TextInput.js",
   "scripts": {
     "watch": "babel index.js --watch --out-file dist/TextInput.js",
     "build": "babel index.js --out-file dist/TextInput.js",
-    "prepare": "npm test",
+    "prepare": "npm test && npm run build",
     "test": "jest"
   },
   "repository": {

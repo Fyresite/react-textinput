@@ -84,6 +84,13 @@ var TextInput = function (_Component) {
           value: value,
           valid: valid
         };
+      }, function () {
+        // Check if the onChange property is defined as a function
+        if (typeof _this3.props.onChange === 'function') {
+          // If the onChange property is defined as a function, call it and send the
+          // synthetic event and the updated state of the component
+          _this3.props.onChange(e, Object.assign({}, _this3.state));
+        }
       });
     }
   }, {
