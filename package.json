@@ -1,6 +1,6 @@
 {
   "name": "react-button",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Barebones React button component",
   "main": "index.js",
   "scripts": {
