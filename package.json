@@ -1,5 +1,5 @@
 {
-  "name": "@fyresite/react-button",
+  "name": "@fyresite/react-textinput",
   "version": "0.1.0",
   "description": "Barebones React button component",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Fyresite/react-button.git"
+    "url": "git+https://github.com/Fyresite/react-textinput.git"
   },
   "author": "Stephen Orr",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Fyresite/react-button/issues"
+    "url": "https://github.com/Fyresite/react-textinput/issues"
   },
-  "homepage": "https://github.com/Fyresite/react-button#readme",
+  "homepage": "https://github.com/Fyresite/react-textinput#readme",
   "dependencies": {
     "react": "^16.1.0"
   },
