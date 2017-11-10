@@ -4,6 +4,7 @@
   "description": "Barebones React button component",
   "main": "index.js",
   "scripts": {
+    "prepare": "npm test",
     "test": "jest"
   },
   "repository": {
