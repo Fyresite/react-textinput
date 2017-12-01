@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { configure, shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import TextInput from './index';
+// import TextInput from './index';
+import TextInput from './dist/TextInput';
 
 configure({ adapter: new Adapter() });
 

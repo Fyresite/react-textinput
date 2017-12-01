@@ -9,7 +9,7 @@ class TextInput extends Component {
     this.id = props.id || uuidv4();
 
     this.state = {
-      value: props.value || '',
+      value: typeof props.value !== 'undefined' ? props.value : '',
       valid: ''
     };
   }

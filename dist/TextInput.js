@@ -34,7 +34,7 @@ var TextInput = function (_Component) {
     _this.id = props.id || (0, _v2.default)();
 
     _this.state = {
-      value: props.value || '',
+      value: typeof props.value !== 'undefined' ? props.value : '',
       valid: ''
     };
     return _this;
