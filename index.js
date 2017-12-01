@@ -62,10 +62,23 @@ class TextInput extends Component {
   }
 
   render() {
+    let textInputClasses = ['text-input'];
+
+    if (typeof this.props.className !== 'undefined') {
+      textInputClasses.push(this.props.className);
+    }
+
+    let inputClasses = [];
+
+    if (typeof this.props.inputClassName !== 'undefined') {
+      inputClasses.push(this.props.inputClassName);
+    }
+
     return (
-      <div className="text-input">
+      <div className={textInputClasses.join(' ')}>
         { typeof this.props.label !== 'undefined' ? <label htmlFor={this.id}>{this.props.label}</label> : '' }
         <input
+          className={inputClasses.join(' ')}
           type={this.props.type || 'text'}
           onChange={this.handleChange.bind(this)}
           value={this.state.value} />

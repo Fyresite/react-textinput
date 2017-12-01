@@ -96,15 +96,28 @@ var TextInput = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var textInputClasses = ['text-input'];
+
+      if (typeof this.props.className !== 'undefined') {
+        textInputClasses.push(this.props.className);
+      }
+
+      var inputClasses = [];
+
+      if (typeof this.props.inputClassName !== 'undefined') {
+        inputClasses.push(this.props.inputClassName);
+      }
+
       return _react2.default.createElement(
         'div',
-        { className: 'text-input' },
+        { className: textInputClasses.join(' ') },
         typeof this.props.label !== 'undefined' ? _react2.default.createElement(
           'label',
           { htmlFor: this.id },
           this.props.label
         ) : '',
         _react2.default.createElement('input', {
+          className: inputClasses.join(' '),
           type: this.props.type || 'text',
           onChange: this.handleChange.bind(this),
           value: this.state.value }),
