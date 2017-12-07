@@ -133,6 +133,11 @@ var TextInput = function (_Component) {
             { className: 'error' },
             this.props.error
           )
+        ) : '',
+        typeof this.props.subLabel !== 'undefined' ? _react2.default.createElement(
+          'small',
+          { className: 'sub-label' },
+          this.props.subLabel
         ) : ''
       );
     }

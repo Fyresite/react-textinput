@@ -94,6 +94,7 @@ class TextInput extends Component {
             </div>
             : ''
         }
+        { typeof this.props.subLabel !== 'undefined' ? <small className="sub-label">{this.props.subLabel}</small> : '' }
       </div>
     );
   }

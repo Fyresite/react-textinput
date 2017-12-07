@@ -10,7 +10,7 @@ configure({ adapter: new Adapter() });
 
 const div = document.createElement('div');
 
-it('renders without props without crashing', () => {
+it('renders without crashing', () => {
   ReactDOM.render(
     <TextInput />
   , div);
@@ -39,4 +39,13 @@ it('displays success message when validator function returns true', () => {
   const success = <div className="validation-message"><div className="success">{successMessage}</div></div>;
 
   expect(input.contains(success)).toEqual(true);
+});
+
+it('displays the sublabel', () => {
+  const subLabel = "here's the sublabel";
+
+  const input = shallow(<TextInput subLabel={subLabel} />);
+  const subLabelNode = <small className="sub-label">{subLabel}</small>;
+
+  expect(input.contains(subLabelNode)).toEqual(true);
 });
