@@ -96,11 +96,6 @@ var TextInput = function (_Component) {
       });
     }
   }, {
-    key: 'focus',
-    value: function focus() {
-      this.refs.input.focus();
-    }
-  }, {
     key: 'renderSubLabel',
     value: function renderSubLabel() {
       var classes = ['sub-label'];
@@ -118,6 +113,8 @@ var TextInput = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this4 = this;
+
       var textInputClasses = ['text-input'];
 
       if (typeof this.props.className !== 'undefined') {
@@ -143,7 +140,9 @@ var TextInput = function (_Component) {
           type: this.props.type || 'text',
           onChange: this.handleChange.bind(this),
           value: this.state.value,
-          ref: 'input' }),
+          ref: function ref(input) {
+            return _this4.input = input;
+          } }),
         this.state.valid !== '' ? _react2.default.createElement(
           'div',
           { className: 'validation-message' },

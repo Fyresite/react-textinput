@@ -24,6 +24,12 @@ class TextInput extends Component {
         return { valid };
       });
     }
+
+    this.focus = this.focus.bind(this);
+  }
+
+  focus() {
+    this.refs.input.focus();
   }
 
   handleChange(e) {
@@ -94,7 +100,7 @@ class TextInput extends Component {
           type={this.props.type || 'text'}
           onChange={this.handleChange.bind(this)}
           value={this.state.value}
-          ref={input => this.input = input} />
+          ref="input" />
         {
           this.state.valid !== '' ?
             <div className="validation-message">
