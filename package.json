@@ -6,8 +6,8 @@
   "scripts": {
     "watch": "babel index.js --watch --out-file dist/TextInput.js",
     "build": "babel index.js --out-file dist/TextInput.js",
-    "prepare": "npm test && npm run build",
-    "test": "jest"
+    "prepare": "npm test",
+    "test": "npm run build && jest"
   },
   "repository": {
     "type": "git",

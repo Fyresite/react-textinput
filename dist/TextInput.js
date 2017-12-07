@@ -96,6 +96,11 @@ var TextInput = function (_Component) {
       });
     }
   }, {
+    key: 'focus',
+    value: function focus() {
+      this.refs.input.focus();
+    }
+  }, {
     key: 'renderSubLabel',
     value: function renderSubLabel() {
       var classes = ['sub-label'];
@@ -137,7 +142,8 @@ var TextInput = function (_Component) {
           className: inputClasses.join(' '),
           type: this.props.type || 'text',
           onChange: this.handleChange.bind(this),
-          value: this.state.value }),
+          value: this.state.value,
+          ref: 'input' }),
         this.state.valid !== '' ? _react2.default.createElement(
           'div',
           { className: 'validation-message' },
