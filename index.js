@@ -17,7 +17,7 @@ class TextInput extends Component {
   }
 
   componentDidMount() {
-    if (typeof this.props.validator === 'function') {
+    if (typeof this.props.validator === 'function' && this.state.value !== '') {
       this.setState((prevState, props) => {
         let valid = this.props.validator(this.state.value);
 
@@ -70,7 +70,7 @@ class TextInput extends Component {
       classes.push(this.props.subLabelClassName);
     }
 
-    return <small className={classes.join(' ')}>{this.props.subLabel}</small>;
+    return (<small className={classes.join(' ')}>{this.props.subLabel}</small>);
   }
 
   render() {

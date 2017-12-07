@@ -47,7 +47,7 @@ var TextInput = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      if (typeof this.props.validator === 'function') {
+      if (typeof this.props.validator === 'function' && this.state.value !== '') {
         this.setState(function (prevState, props) {
           var valid = _this2.props.validator(_this2.state.value);
 
