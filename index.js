@@ -61,6 +61,10 @@ class TextInput extends Component {
     });
   }
 
+  focus() {
+    this.refs.input.focus();
+  }
+  
   render() {
     let textInputClasses = ['text-input'];
 
@@ -81,7 +85,8 @@ class TextInput extends Component {
           className={inputClasses.join(' ')}
           type={this.props.type || 'text'}
           onChange={this.handleChange.bind(this)}
-          value={this.state.value} />
+          value={this.state.value}
+          ref="input" />
         {
           this.state.valid !== '' ?
             <div className="validation-message">
