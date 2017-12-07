@@ -14,7 +14,6 @@ class TextInput extends Component {
     };
 
     this.renderSubLabel = this.renderSubLabel.bind(this);
-    this.focus = this.focus.bind(this);
   }
 
   componentDidMount() {
@@ -63,10 +62,6 @@ class TextInput extends Component {
       }
     });
   }
-
-  focus() {
-    this.refs.input.focus();
-  }
   
   renderSubLabel() {
     let classes = ['sub-label'];
@@ -99,7 +94,7 @@ class TextInput extends Component {
           type={this.props.type || 'text'}
           onChange={this.handleChange.bind(this)}
           value={this.state.value}
-          ref="input" />
+          ref={input => this.input = input} />
         {
           this.state.valid !== '' ?
             <div className="validation-message">
