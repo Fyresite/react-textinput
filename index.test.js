@@ -41,11 +41,15 @@ it('displays success message when validator function returns true', () => {
   expect(input.contains(success)).toEqual(true);
 });
 
-it('displays the sublabel', () => {
+it('displays the sublabel with a SublabelClass', () => {
   const subLabel = "here's the sublabel";
 
-  const input = shallow(<TextInput subLabel={subLabel} />);
-  const subLabelNode = <small className="sub-label">{subLabel}</small>;
+  const input = shallow(
+    <TextInput
+      subLabel={subLabel}
+      subLabelClassName="testing" />
+  );
+  const subLabelNode = <small className="sub-label testing">{subLabel}</small>;
 
   expect(input.contains(subLabelNode)).toEqual(true);
 });

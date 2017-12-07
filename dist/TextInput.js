@@ -37,6 +37,8 @@ var TextInput = function (_Component) {
       value: typeof props.value !== 'undefined' ? props.value : '',
       valid: ''
     };
+
+    _this.renderSubLabel = _this.renderSubLabel.bind(_this);
     return _this;
   }
 
@@ -94,6 +96,21 @@ var TextInput = function (_Component) {
       });
     }
   }, {
+    key: 'renderSubLabel',
+    value: function renderSubLabel() {
+      var classes = ['sub-label'];
+
+      if (typeof this.props.subLabelClassName !== 'undefined') {
+        classes.push(this.props.subLabelClassName);
+      }
+
+      return _react2.default.createElement(
+        'small',
+        { className: classes.join(' ') },
+        this.props.subLabel
+      );
+    }
+  }, {
     key: 'render',
     value: function render() {
       var textInputClasses = ['text-input'];
@@ -134,11 +151,7 @@ var TextInput = function (_Component) {
             this.props.error
           )
         ) : '',
-        typeof this.props.subLabel !== 'undefined' ? _react2.default.createElement(
-          'small',
-          { className: 'sub-label' },
-          this.props.subLabel
-        ) : ''
+        typeof this.props.subLabel !== 'undefined' ? this.renderSubLabel() : ''
       );
     }
   }]);

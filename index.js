@@ -12,6 +12,8 @@ class TextInput extends Component {
       value: typeof props.value !== 'undefined' ? props.value : '',
       valid: ''
     };
+
+    this.renderSubLabel = this.renderSubLabel.bind(this);
   }
 
   componentDidMount() {
@@ -61,6 +63,16 @@ class TextInput extends Component {
     });
   }
 
+  renderSubLabel() {
+    let classes = ['sub-label'];
+
+    if (typeof this.props.subLabelClassName !== 'undefined') {
+      classes.push(this.props.subLabelClassName);
+    }
+
+    return <small className={classes.join(' ')}>{this.props.subLabel}</small>;
+  }
+
   render() {
     let textInputClasses = ['text-input'];
 
@@ -94,7 +106,7 @@ class TextInput extends Component {
             </div>
             : ''
         }
-        { typeof this.props.subLabel !== 'undefined' ? <small className="sub-label">{this.props.subLabel}</small> : '' }
+        { typeof this.props.subLabel !== 'undefined' ? this.renderSubLabel() : '' }
       </div>
     );
   }
