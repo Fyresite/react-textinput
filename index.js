@@ -14,6 +14,7 @@ class TextInput extends Component {
     };
 
     this.renderSubLabel = this.renderSubLabel.bind(this);
+    this.focus = this.focus.bind(this);
   }
 
   componentDidMount() {
