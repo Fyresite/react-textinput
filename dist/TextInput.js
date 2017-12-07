@@ -54,6 +54,13 @@ var TextInput = function (_Component) {
           return { valid: valid };
         });
       }
+
+      this.focus = this.focus.bind(this);
+    }
+  }, {
+    key: 'focus',
+    value: function focus() {
+      this.refs.input.focus();
     }
   }, {
     key: 'handleChange',
@@ -113,8 +120,6 @@ var TextInput = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
-
       var textInputClasses = ['text-input'];
 
       if (typeof this.props.className !== 'undefined') {
@@ -140,9 +145,7 @@ var TextInput = function (_Component) {
           type: this.props.type || 'text',
           onChange: this.handleChange.bind(this),
           value: this.state.value,
-          ref: function ref(input) {
-            return _this4.input = input;
-          } }),
+          ref: 'input' }),
         this.state.valid !== '' ? _react2.default.createElement(
           'div',
           { className: 'validation-message' },
