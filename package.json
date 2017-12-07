@@ -28,6 +28,7 @@
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
     "jest": "^21.2.1",
+    "lodash.isequal": "^4.5.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-test-renderer": "^16.1.0",
