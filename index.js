@@ -107,6 +107,7 @@ class TextInput extends Component {
         { typeof this.props.label !== 'undefined' ? <label htmlFor={this.id}>{this.props.label}</label> : '' }
         <input
           className={inputClasses.join(' ')}
+          disabled={this.props.disabled || false}
           type={this.props.type || 'text'}
           onChange={this.handleChange.bind(this)}
           value={this.state.value}
