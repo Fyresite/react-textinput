@@ -153,6 +153,7 @@ var TextInput = function (_Component) {
         ) : '',
         _react2.default.createElement('input', {
           className: inputClasses.join(' '),
+          disabled: this.props.disabled || false,
           type: this.props.type || 'text',
           onChange: this.handleChange.bind(this),
           value: this.state.value,
