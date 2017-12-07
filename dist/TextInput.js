@@ -35,7 +35,7 @@ var TextInput = function (_Component) {
 
     _this.state = {
       value: typeof props.value !== 'undefined' ? props.value : '',
-      valid: ''
+      valid: typeof props.valid !== 'undefined' ? props.valid : ''
     };
 
     _this.renderSubLabel = _this.renderSubLabel.bind(_this);
@@ -56,6 +56,17 @@ var TextInput = function (_Component) {
       }
 
       this.focus = this.focus.bind(this);
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevProps.valid !== this.props.valid) {
+        this.setState(function (prevState, props) {
+          return {
+            valid: props.valid
+          };
+        });
+      }
     }
   }, {
     key: 'focus',

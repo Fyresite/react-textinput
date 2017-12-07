@@ -10,7 +10,7 @@ class TextInput extends Component {
 
     this.state = {
       value: typeof props.value !== 'undefined' ? props.value : '',
-      valid: ''
+      valid: typeof props.valid !== 'undefined' ? props.valid : ''
     };
 
     this.renderSubLabel = this.renderSubLabel.bind(this);
@@ -26,6 +26,16 @@ class TextInput extends Component {
     }
 
     this.focus = this.focus.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.valid !== this.props.valid) {
+      this.setState((prevState, props) => {
+        return {
+          valid: props.valid
+        };
+      });
+    }
   }
 
   focus() {
