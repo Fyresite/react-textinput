@@ -10,7 +10,7 @@ configure({ adapter: new Adapter() });
 
 const div = document.createElement('div');
 
-it('renders without props without crashing', () => {
+it('renders without crashing', () => {
   ReactDOM.render(
     <TextInput />
   , div);
@@ -39,4 +39,35 @@ it('displays success message when validator function returns true', () => {
   const success = <div className="validation-message"><div className="success">{successMessage}</div></div>;
 
   expect(input.contains(success)).toEqual(true);
+});
+
+it('displays the sublabel with a SublabelClass', () => {
+  const subLabel = "here's the sublabel";
+
+  const input = shallow(
+    <TextInput
+      subLabel={subLabel}
+      subLabelClassName="testing" />
+  );
+  const subLabelNode = <small className="sub-label testing">{subLabel}</small>;
+
+  expect(input.contains(subLabelNode)).toEqual(true);
+});
+
+it('displays an error message and hides the sublabel', () => {
+  const errorMessage = "error message";
+  const subLabelMessage = "this shouldn't display";
+
+  const input = shallow(
+    <TextInput subLabel={subLabelMessage} error={errorMessage} validator={val => { return false }} value="something" />
+  );
+  const errorNode = (
+    <div className="validation-message">
+      <div className="error">{errorMessage}</div>
+    </div>
+  );
+  const subLabelNode = (<small className="sub-label">{subLabelMessage}</small>);
+
+  expect(input.contains(errorNode)).toEqual(true);
+  expect(input.contains(subLabelNode)).toEqual(false);
 });

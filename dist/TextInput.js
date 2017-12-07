@@ -37,6 +37,8 @@ var TextInput = function (_Component) {
       value: typeof props.value !== 'undefined' ? props.value : '',
       valid: ''
     };
+
+    _this.renderSubLabel = _this.renderSubLabel.bind(_this);
     return _this;
   }
 
@@ -45,7 +47,7 @@ var TextInput = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      if (typeof this.props.validator === 'function') {
+      if (typeof this.props.validator === 'function' && this.state.value !== '') {
         this.setState(function (prevState, props) {
           var valid = _this2.props.validator(_this2.state.value);
 
@@ -94,6 +96,21 @@ var TextInput = function (_Component) {
       });
     }
   }, {
+    key: 'renderSubLabel',
+    value: function renderSubLabel() {
+      var classes = ['sub-label'];
+
+      if (typeof this.props.subLabelClassName !== 'undefined') {
+        classes.push(this.props.subLabelClassName);
+      }
+
+      return _react2.default.createElement(
+        'small',
+        { className: classes.join(' ') },
+        this.props.subLabel
+      );
+    }
+  }, {
     key: 'render',
     value: function render() {
       var textInputClasses = ['text-input'];
@@ -133,7 +150,8 @@ var TextInput = function (_Component) {
             { className: 'error' },
             this.props.error
           )
-        ) : ''
+        ) : '',
+        typeof this.props.subLabel !== 'undefined' && this.state.valid !== false && typeof this.props.success === 'undefined' ? this.renderSubLabel() : ''
       );
     }
   }]);

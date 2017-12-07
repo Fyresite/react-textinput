@@ -12,10 +12,12 @@ class TextInput extends Component {
       value: typeof props.value !== 'undefined' ? props.value : '',
       valid: ''
     };
+
+    this.renderSubLabel = this.renderSubLabel.bind(this);
   }
 
   componentDidMount() {
-    if (typeof this.props.validator === 'function') {
+    if (typeof this.props.validator === 'function' && this.state.value !== '') {
       this.setState((prevState, props) => {
         let valid = this.props.validator(this.state.value);
 
@@ -65,6 +67,16 @@ class TextInput extends Component {
     this.refs.input.focus();
   }
   
+  renderSubLabel() {
+    let classes = ['sub-label'];
+
+    if (typeof this.props.subLabelClassName !== 'undefined') {
+      classes.push(this.props.subLabelClassName);
+    }
+
+    return (<small className={classes.join(' ')}>{this.props.subLabel}</small>);
+  }
+
   render() {
     let textInputClasses = ['text-input'];
 
@@ -99,6 +111,7 @@ class TextInput extends Component {
             </div>
             : ''
         }
+        { typeof this.props.subLabel !== 'undefined' && (this.state.valid !== false && typeof this.props.success === 'undefined') ? this.renderSubLabel() : '' }
       </div>
     );
   }
