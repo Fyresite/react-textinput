@@ -53,3 +53,21 @@ it('displays the sublabel with a SublabelClass', () => {
 
   expect(input.contains(subLabelNode)).toEqual(true);
 });
+
+it('displays an error message and hides the sublabel', () => {
+  const errorMessage = "error message";
+  const subLabelMessage = "this shouldn't display";
+
+  const input = shallow(
+    <TextInput subLabel={subLabelMessage} error={errorMessage} validator={val => { return false }} value="something" />
+  );
+  const errorNode = (
+    <div className="validation-message">
+      <div className="error">{errorMessage}</div>
+    </div>
+  );
+  const subLabelNode = (<small className="sub-label">{subLabelMessage}</small>);
+
+  expect(input.contains(errorNode)).toEqual(true);
+  expect(input.contains(subLabelNode)).toEqual(false);
+});

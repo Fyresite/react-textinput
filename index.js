@@ -106,7 +106,7 @@ class TextInput extends Component {
             </div>
             : ''
         }
-        { typeof this.props.subLabel !== 'undefined' ? this.renderSubLabel() : '' }
+        { typeof this.props.subLabel !== 'undefined' && (this.state.valid !== false && typeof this.props.success === 'undefined') ? this.renderSubLabel() : '' }
       </div>
     );
   }

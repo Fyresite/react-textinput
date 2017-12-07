@@ -151,7 +151,7 @@ var TextInput = function (_Component) {
             this.props.error
           )
         ) : '',
-        typeof this.props.subLabel !== 'undefined' ? this.renderSubLabel() : ''
+        typeof this.props.subLabel !== 'undefined' && this.state.valid !== false && typeof this.props.success === 'undefined' ? this.renderSubLabel() : ''
       );
     }
   }]);
