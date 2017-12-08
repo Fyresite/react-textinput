@@ -45,7 +45,7 @@ class TextInput extends Component {
   }
 
   focus() {
-    this.refs.input.focus();
+    this.input.focus();
   }
 
   handleChange(e) {
