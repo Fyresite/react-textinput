@@ -84,7 +84,6 @@ var TextInput = function (_Component) {
 
       // Pass the value from the event to avoid a stupid synthetic event
       var value = e.target.value;
-      console.log(e);
 
       this.setState(function (prevState, props) {
         var valid = prevState.valid;
