@@ -60,7 +60,7 @@ var TextInput = function (_Component) {
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps, prevState) {
-      if (prevProps.value !== this.props.value) {
+      if (prevProps.value !== this.props.value || prevProps.valid !== this.props.valid) {
 
         var state = Object.assign({}, this.state, {
           value: this.props.value,
@@ -84,6 +84,7 @@ var TextInput = function (_Component) {
 
       // Pass the value from the event to avoid a stupid synthetic event
       var value = e.target.value;
+      console.log(e);
 
       this.setState(function (prevState, props) {
         var valid = prevState.valid;
@@ -135,6 +136,8 @@ var TextInput = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this4 = this;
+
       var textInputClasses = ['text-input'];
 
       if (typeof this.props.className !== 'undefined') {
@@ -156,12 +159,15 @@ var TextInput = function (_Component) {
           this.props.label
         ) : '',
         _react2.default.createElement('input', {
+          id: this.id,
           className: inputClasses.join(' '),
           disabled: this.props.disabled || false,
           type: this.props.type || 'text',
           onChange: this.handleChange.bind(this),
           value: this.state.value,
-          ref: 'input' }),
+          ref: function ref(el) {
+            return _this4.input = el;
+          } }),
         this.state.valid !== '' ? _react2.default.createElement(
           'div',
           { className: 'validation-message' },

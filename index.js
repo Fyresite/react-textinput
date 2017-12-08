@@ -29,7 +29,7 @@ class TextInput extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.value !== this.props.value) {
+    if (prevProps.value !== this.props.value || prevProps.valid !== this.props.valid) {
       
       let state = Object.assign({}, this.state, {
         value: this.props.value,
@@ -110,12 +110,13 @@ class TextInput extends Component {
       <div className={textInputClasses.join(' ')}>
         { typeof this.props.label !== 'undefined' ? <label htmlFor={this.id}>{this.props.label}</label> : '' }
         <input
+          id={this.id}
           className={inputClasses.join(' ')}
           disabled={this.props.disabled || false}
           type={this.props.type || 'text'}
           onChange={this.handleChange.bind(this)}
           value={this.state.value}
-          ref="input" />
+          ref={el => this.input = el} />
         {
           this.state.valid !== '' ?
             <div className="validation-message">
