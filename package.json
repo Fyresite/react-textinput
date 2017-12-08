@@ -1,6 +1,6 @@
 {
   "name": "@fyresite/react-textinput",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "description": "Barebones React text input component",
   "main": "dist/TextInput.js",
   "scripts": {
