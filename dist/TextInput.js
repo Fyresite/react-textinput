@@ -80,7 +80,7 @@ var TextInput = function (_Component) {
   }, {
     key: 'focus',
     value: function focus() {
-      this.refs.input.focus();
+      this.input.focus();
     }
   }, {
     key: 'handleChange',
