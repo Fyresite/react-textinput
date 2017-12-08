@@ -14,6 +14,10 @@ var _v = require('uuid/v4');
 
 var _v2 = _interopRequireDefault(_v);
 
+var _lodash = require('lodash.isequal');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -60,8 +64,9 @@ var TextInput = function (_Component) {
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps, prevState) {
-      if (prevProps.value !== this.props.value || prevProps.valid !== this.props.valid) {
-
+      // Do a diff comparison of the prevProps and this.props objects to see if anything
+      // has changed before setting the state, (so we don't trigger an infinite loop)
+      if (!(0, _lodash2.default)(prevProps, this.props)) {
         var state = Object.assign({}, this.state, {
           value: this.props.value,
           valid: this.props.valid

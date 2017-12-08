@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuidv4 from 'uuid/v4';
+import isEqual from 'lodash.isequal';
 
 class TextInput extends Component {
   constructor(props) {
@@ -29,8 +30,9 @@ class TextInput extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.value !== this.props.value || prevProps.valid !== this.props.valid) {
-      
+    // Do a diff comparison of the prevProps and this.props objects to see if anything
+    // has changed before setting the state, (so we don't trigger an infinite loop)
+    if (!isEqual(prevProps, this.props)) {
       let state = Object.assign({}, this.state, {
         value: this.props.value,
         valid: this.props.valid
