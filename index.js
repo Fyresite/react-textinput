@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import uuidv4 from 'uuid/v4';
 import isEqual from 'lodash.isequal';
 
+import './style.scss';
+
 class TextInput extends Component {
   constructor(props) {
     super(props);

@@ -12,7 +12,9 @@ const div = document.createElement('div');
 
 it('renders without crashing', () => {
   ReactDOM.render(
-    <TextInput />
+    <div>
+      <TextInput />
+    </div>
   , div);
 });
 
