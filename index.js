@@ -35,9 +35,12 @@ class TextInput extends Component {
     // Do a diff comparison of the prevProps and this.props objects to see if anything
     // has changed before setting the state, (so we don't trigger an infinite loop)
     if (!isEqual(prevProps, this.props)) {
+      // If the props are unequal we can reset the state, but first we need to make sure
+      // we handle the case of value or valid not being set as a prop, which can cause
+      // a bug where the component loses the key in it's state.
       let state = Object.assign({}, this.state, {
-        value: this.props.value,
-        valid: this.props.valid
+        value: typeof this.props.value !== 'undefined' ? this.props.value : this.state.value,
+        valid: typeof this.props.valid !== 'undefined' ? this.props.valid : this.state.valid
       });
 
       this.setState((prevState, props) => {
