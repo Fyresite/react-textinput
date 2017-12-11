@@ -1,9 +1,14 @@
 .text-input {
 
   .validation-message {
+    font-size: 80%; // Match with <small> element styling
 
     .error {
       color: red;
+    }
+
+    .success {
+      color: green;
     }
   }
 }

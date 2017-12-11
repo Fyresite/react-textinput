@@ -2331,7 +2331,7 @@ exports = module.exports = __webpack_require__(10)(undefined);
 
 
 // module
-exports.push([module.i, ".text-input .validation-message .error {\n  color: red; }\n", ""]);
+exports.push([module.i, ".text-input .validation-message {\n  font-size: 80%; }\n  .text-input .validation-message .error {\n    color: red; }\n  .text-input .validation-message .success {\n    color: green; }\n", ""]);
 
 // exports
 
