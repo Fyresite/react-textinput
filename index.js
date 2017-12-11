@@ -123,7 +123,8 @@ class TextInput extends Component {
           type={this.props.type || 'text'}
           onChange={this.handleChange.bind(this)}
           value={this.state.value}
-          ref={el => this.input = el} />
+          ref={el => this.input = el}
+          placeholder={this.props.placeholder} />
         {
           this.state.valid !== '' ?
             <div className="validation-message">

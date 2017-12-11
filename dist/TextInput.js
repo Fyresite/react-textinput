@@ -274,7 +274,8 @@ var TextInput = function (_Component) {
           value: this.state.value,
           ref: function ref(el) {
             return _this4.input = el;
-          } }),
+          },
+          placeholder: this.props.placeholder }),
         this.state.valid !== '' ? _react2.default.createElement(
           'div',
           { className: 'validation-message' },
