@@ -17,6 +17,7 @@ class TextInput extends Component {
     };
 
     this.renderSubLabel = this.renderSubLabel.bind(this);
+    this.validate = this.validate.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +52,20 @@ class TextInput extends Component {
 
   focus() {
     this.input.focus();
+  }
+
+  validate() {
+    let valid = '';
+
+    if (typeof this.props.validator === 'function') {
+      valid = this.props.validator(this.state.value);
+    }
+
+    this.setState((state, props) => {
+      return { valid };
+    });
+
+    return valid;
   }
 
   handleChange(e) {

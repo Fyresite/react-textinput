@@ -143,6 +143,7 @@ var TextInput = function (_Component) {
     };
 
     _this.renderSubLabel = _this.renderSubLabel.bind(_this);
+    _this.validate = _this.validate.bind(_this);
     return _this;
   }
 
@@ -184,6 +185,21 @@ var TextInput = function (_Component) {
     key: 'focus',
     value: function focus() {
       this.input.focus();
+    }
+  }, {
+    key: 'validate',
+    value: function validate() {
+      var valid = '';
+
+      if (typeof this.props.validator === 'function') {
+        valid = this.props.validator(this.state.value);
+      }
+
+      this.setState(function (state, props) {
+        return { valid: valid };
+      });
+
+      return valid;
     }
   }, {
     key: 'handleChange',
